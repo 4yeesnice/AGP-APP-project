@@ -1,0 +1,381 @@
+
+
+
+WindowManager:
+    MainWindow:
+        MDBoxLayout:
+            orientation: 'vertical'
+
+
+            Image:
+                size_hint: 1, 0.2
+                source: 'header.png'
+
+
+
+
+            ScrollView:
+                do_scroll_y: True
+
+                MDBoxLayout:
+                    orientation: 'vertical'
+                    padding: 0, 30, 0, 0
+                    size_hint_y: None
+                    height: self.minimum_height
+
+
+
+                    cols: 1
+
+                    Button:
+                        background_color: 0, 0.35, 1, 0.8
+                        size_hint: None, None
+                        size: 1000, 100
+                        text: 'Рассчитать стравливание газа'
+                        on_release:
+                            app.root.current = "first"
+                    Button:
+                        background_color: 0, 0.35, 1, 0.8
+                        size: 1000, 100
+                        size_hint: None, None
+                        text: 'Рассчитать суммарный расход газа при рем. работ'
+                        on_release:
+                            app.root.current = "second"
+
+                    Button:
+                        background_color: 0, 0.35, 1, 0.8
+                        size: 1000, 100
+                        size_hint: None, None
+                        text: 'Посчитать 3'
+                        on_release:
+                            app.root.current = "PDF"
+                    Button:
+                        background_color: 0, 0.35, 1, 0.8
+                        size: 1000, 100
+                        size_hint: None, None
+                        text: 'Посчитать 4'
+                        on_release:
+                            app.root.current = "fourth"
+                    Button:
+                        background_color: 0, 0.35, 1, 0.8
+                        size: 1000, 100
+                        size_hint: None, None
+                        text: 'Посчитать 4'
+                        on_release:
+                            app.root.current = "fourth"
+                    Button:
+                        background_color: 0, 0.35, 1, 0.8
+                        size: 1000, 100
+                        size_hint: None, None
+                        text: 'Посчитать 4'
+                        on_release:
+                            app.root.current = "fourth"
+                    Button:
+                        background_color: 0, 0.35, 1, 0.8
+                        size: 1000, 100
+                        size_hint: None, None
+                        text: 'Посчитать 4'
+                        on_release:
+                            app.root.current = "fourth"
+                    Button:
+                        background_color: 0, 0.69, 0.85, 0.8
+                        size: 1000, 100
+                        size_hint: None, None
+                        text: 'Посчитать 4'
+                        on_release:
+                            app.root.current = "fourth"
+
+    FirstWindow:
+    PDFWindow:
+    SecondWindow:
+
+
+
+<MainWindow>
+    name: "main"
+
+
+
+
+<PDFWindow>
+    name: "PDF"
+    object: object
+    time: time
+    name1: name1
+    name2: name2
+    name3: name3
+
+    GridLayout:
+        cols: 2
+        padding: 10, 50, 10, 100
+        BoxLayout:
+            padding: 50, 0, 0, 0
+            orientation: 'vertical'
+            spacing: 30
+            MDLabel:
+                text: "Обьект: "
+                font_size: '25sp'
+
+            MDLabel:
+                text: "Время: "
+                font_size: '25sp'
+
+            MDLabel:
+                text: "ФИО Начальника объекта: "
+                font_size: '25sp'
+
+            MDLabel:
+                text: "Фио Зам. начальника объекта: "
+                font_size: '25sp'
+
+            MDLabel:
+                text: "Фио Сменного Инженера: "
+                font_size: '25sp'
+
+        BoxLayout:
+            orientation: 'vertical'
+            spacing: 30
+            padding: 150, 0, 0, 0
+            MDTextField:
+                id: object
+                size_hint: 0.5, 0.5
+
+            MDTextField:
+                id: time
+                size_hint: 0.5, 0.5
+
+            MDTextField:
+                id: name1
+                size_hint: 0.75, 0.5
+
+            MDTextField:
+                id: name2
+                size_hint: 0.75, 0.5
+
+            MDTextField:
+                id: name3
+                size_hint: 0.75, 0.5
+
+
+
+        BoxLayout:
+            spacing: 50
+            padding: 0, 100, 5, 0
+            orientation: 'vertical'
+            size_hint: 0.5, 0.4
+            MDRaisedButton:
+                size_hint: 1, 1
+                text: 'Создать отчет в виде PDF'
+                on_release:
+                    root.create()
+
+        BoxLayout:
+            spacing: 50
+            orientation: 'vertical'
+            padding: 5, 100, 0, 0
+            size_hint: 0.5, 0.4
+            MDRaisedButton:
+                size_hint: 1, 1
+                text: 'Назад'
+                on_release:
+                    app.root.current = 'first'
+
+    BoxLayout:
+        padding: 10, 60, 10, 10
+        orientation: 'vertical'
+        size_hint: 1, 0.2
+        MDRaisedButton:
+            size_hint: 1, 1
+            text: 'На главное меню'
+            on_release:
+                app.root.current = 'main'
+
+
+
+
+
+
+<FirstWindow>
+    name: "first"
+
+
+    GridLayout:
+
+        volume: self.volume
+        pressure: pressure
+        temperature: temperature
+        z_factor: z_factor
+        flow: flow
+
+        cols: 2
+        padding: 10, 50, 10, 100
+
+        BoxLayout:
+
+            padding: 50, 0, 0, 0
+            orientation: 'vertical'
+            spacing: 30
+
+            MDLabel:
+                text: "Значение V (стр. ап.): "
+                font_size: '25sp'
+
+            MDLabel:
+                text: "Значение P (стр.): "
+                font_size: '25sp'
+            MDLabel:
+                text: "Значение T(стр.): "
+                font_size: '25sp'
+
+            MDLabel:
+                text: "Значение Z: "
+                font_size: '25sp'
+            MDLabel:
+                padding: 0, 100, 0, 0
+                text: 'Значение Q рем.: '
+                font_size: '25sp'
+
+        BoxLayout:
+            orientation: 'vertical'
+            padding: 100, 0, 0, 0
+
+            MDTextField:
+                id: volume
+                size_hint: 0.75, 1
+            MDTextField:
+                id: pressure
+                size_hint: 0.75, 1
+            MDTextField:
+                id: temperature
+                size_hint: 0.75, 1
+            MDTextField:
+                id: z_factor
+                size_hint: 0.75, 1
+            MDTextField:
+                id: flow
+                text: '0'
+                pos_hint: {'x': 0, 'y': 2}
+                size_hint: 0.75, 0.75
+                padding: 0, 100, 0, 0
+
+        BoxLayout:
+            spacing: 50
+            padding: 0, 100, 5, 0
+            orientation: 'vertical'
+            size_hint: 0.5, 0.4
+            MDRaisedButton:
+                size_hint: 1, 1
+                text: "Посчитать"
+                on_release:
+                    root.calculate()
+        BoxLayout:
+            spacing: 50
+            padding: 5, 100, 0, 0
+            orientation: 'vertical'
+            size_hint: 0.5, 0.4
+            MDRaisedButton:
+                size_hint: 1, 1
+                text: "Вернуться на главное меню"
+                on_release:
+                    app.root.current = "main"
+
+    BoxLayout:
+        padding: 10, 60, 10, 10
+        orientation: 'vertical'
+        size_hint: 1, 0.2
+        MDRaisedButton:
+            size_hint: 1, 0.75
+            text: "Создать PDF"
+            on_release:
+                app.root.current = "PDF"
+                root.next_pdf()
+
+
+
+<SecondWindow>
+    name: "second"
+
+
+    GridLayout:
+
+        volume: self.volume
+        pressure: pressure
+        temperature: temperature
+        z_factor: z_factor
+        flow: flow
+
+        cols: 2
+        padding: 10, 50, 10, 100
+
+        BoxLayout:
+            orientation: 'vertical'
+            spacing: 30
+            MDLabel:
+                text: "V (стр. ап.)"
+                font_size: '25sp'
+
+            MDLabel:
+                text: "P (стр.)"
+                font_size: '25sp'
+            MDLabel:
+                text: "T(стр.)"
+                font_size: '25sp'
+
+            MDLabel:
+                text: "Z"
+                font_size: '25sp'
+            MDLabel:
+                padding: 0, 100, 0, 0
+                text: 'Q рем.'
+                font_size: '25sp'
+
+        BoxLayout:
+            orientation: 'vertical'
+            spacing: 30
+            MDTextField:
+                id: volume
+                size_hint: 0.5, 0.5
+            MDTextField:
+                id: pressure
+                size_hint: 0.5, 0.5
+            MDTextField:
+                id: temperature
+                size_hint: 0.5, 0.5
+            MDTextField:
+                id: z_factor
+                size_hint: 0.5, 0.5
+            MDLabel:
+                id: flow
+                text: '0'
+                size_hint: 0.5, 0.5
+                padding: 0, 100, 0, 0
+
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint: 0.8, 0.2
+            padding: 0, 50, 0, 0
+            MDRaisedButton:
+                size_hint: 1, 1
+                text: "Посчитать"
+                on_release:
+                    root.calculate()
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint: 0.8, 0.2
+            padding: 0, 50, 0, 0
+            MDRaisedButton:
+                size_hint: 1, 1
+                text: "Вернуться на главное меню"
+                on_release:
+                    app.root.current = "main"
+
+    BoxLayout:
+        orientation: 'horizontal'
+        size_hint: 1, 0.2
+        padding: 10, 80, 10, 0
+        MDRaisedButton:
+            size_hint: 1, 1
+            text: "Создать PDF"
+            on_release:
+                app.root.current = "PDF"
+                root.next_pdf()
